@@ -1,6 +1,6 @@
 package automatizados.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import automatizados.pageObject.ProdutoPO;
 
-public class CriarProdutoTest2 extends BaseTest{
+public class ProdutoTest3 extends BaseTest{
 
     public static ProdutoPO produtoPage;
 
@@ -18,14 +18,15 @@ public class CriarProdutoTest2 extends BaseTest{
 		produtoPage = new ProdutoPO(driver);
 	}
 
-    @Test
-    public void TC002_naoDeveCriarOProduto(){
-        produtoPage.criarProduto(0, "", 0, 0, new Date());
-        int qtde = produtoPage.contaProdutos();
 
-		String mensagem = produtoPage.obterMensagem();
-		
-		assertEquals(mensagem, "Todos os campos são obrigatórios para o cadastro!");
+    @Test
+    public void TC003_excluirProduto(){
+        produtoPage.criarProduto(1, "HondaCB300", 20, 50000, new Date());
+        produtoPage.buttonClose.click();
+        produtoPage.buttonExcluir.click();
+        int qtde = produtoPage.contaProdutos();
+        assertTrue(qtde==0);
     }
-    
+
 }
+

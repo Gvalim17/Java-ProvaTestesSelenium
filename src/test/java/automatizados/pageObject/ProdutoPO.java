@@ -44,9 +44,30 @@ public class ProdutoPO extends BasePO {
     @FindBy(xpath = "/html/body/div/div[2]/table/tbody")
     public WebElement linhaProdutos;
 
+    @FindBy(xpath = "//*[@id=\"cadastro-produto\"]/div/div/div[1]/button")
+    public WebElement buttonClose;
+    
+    @FindBy(xpath = "/html/body/div/div[2]/table/tbody/tr/td[6]/button[2]")
+    public WebElement buttonExcluir;
+
+    @FindBy(xpath = "//*[@id=\"cadastro-produto\"]/div/div")
+    public WebElement modal;
+
+    @FindBy(className   = "modal")
+    public WebElement divSemModal;
+
     public String obterMensagem() {
 		return this.spanMensagem.getText();
 	}
+
+    public void fecharTelaCriar(){
+        buttonClose.click();
+    }
+
+    public void abrirModalCriar(){
+        buttonCriar.click();
+        buttonCriar.click();
+    }
 
     public void criarProduto(int codigo, String nome, int qtde, int valor, Date data){
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");

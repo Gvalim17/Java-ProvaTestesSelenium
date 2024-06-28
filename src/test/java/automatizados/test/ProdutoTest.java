@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import automatizados.pageObject.ProdutoPO;
 
-public class CriarProdutoTest extends BaseTest{
+public class ProdutoTest extends BaseTest{
 
     public static ProdutoPO produtoPage;
 
@@ -21,10 +21,8 @@ public class CriarProdutoTest extends BaseTest{
 
     @Test
     public void TC001_deveCriarOProduto(){
-        produtoPage.criarProduto(1, "Escada", 10, 50, new Date());
+        produtoPage.criarProduto(1, "Televisão", 20, 5000, new Date());
         int qtde = produtoPage.contaProdutos();
-    
-
         assertTrue(qtde>0);
     }
     
